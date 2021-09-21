@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+#myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  display:none;
+  margin-top: 20px;
+}
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+
+
+<button onclick="myFunction()" style="color: blue; height: 50px; background-color: black;">click</button>
+
+<div id="myDIV">
+<div class="container">
+<h3>Contact Form</h3>
+  <form action="#">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="fname" placeholder="Your name..">
+    <p id=fnameerr></p>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lname" placeholder="Your last name..">
+    <p id=lnameerr></p>
+    <label for="eid">Email ID</label>
+    <input type="text" id="email_id" name="eid" placeholder="Your email id..">
+    <p id=enameerr></p>
+    <label for="cid">Contact No</label>
+    <input type="text" id="cid" name="cid" placeholder="Your contact number..">
+    <p id=cnameerr></p>
+    <input type="submit" id="submitbtn" value="Submit">
+  </form>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<script>
+    var submitbtn = document.getElementById("submitbtn");
+    submitbtn.addEventListener('click', function(e){
+       e.preventDefault();
+
+       let fName = document.getElementById("fname").value;
+       let lName = document.getElementById("lname").value;
+       let eName = document.getElementById("email_id").value;
+       let cName = document.getElementById("cid").value;
+       if(fName == ""){      
+           document.getElementById("fnameerr").innerHTML = "** first name should not be empty";
+           document.getElementById("fnameerr").style.color = "red";
+       }
+       if(!isNaN (fName)){      
+           document.getElementById("fnameerr").innerHTML = "** name should not be integer value";
+           document.getElementById("fnameerr").style.color = "red";
+       }
+       if(fName.length < 3){
+           document.getElementById("fnameerr").innerHTML = "** first name should be grater than 3";
+           document.getElementById("fnameerr").style.color = "red";
+       }
+       if(lName == ""){      
+           document.getElementById("lnameerr").innerHTML = "** last name should not be empty";
+           document.getElementById("lnameerr").style.color = "red";
+       }
+       if((lName.length < 3) || (lName.length > 20) ){
+           document.getElementById("lnameerr").innerHTML = "** last name should be grater than 3 less than 20 digit";
+           document.getElementById("lnameerr").style.color = "red";
+       }
+       if(eName == ""){      
+           document.getElementById("enameerr").innerHTML = "** Email id should not be empty";
+           document.getElementById("enameerr").style.color = "red";
+       }
+    //    if(eName.indexof('@') <= 0){
+    //     document.getElementById("enameerr").innerHTML = "** Please enter valid email id";
+    //        document.getElementById("enameerr").style.color = "red";  
+    //    }
+       if(cName == ""){      
+           document.getElementById("cnameerr").innerHTML = "** Contact Number should not be empty";
+           document.getElementById("cnameerr").style.color = "red";
+       }
+       if(cName.length < 10){      
+           document.getElementById("cnameerr").innerHTML = "** Contact Number should not be less than 10 digit";
+           document.getElementById("cnameerr").style.color = "red";
+       }
+    })
+</script>
+
+</body>
+</html>
+
